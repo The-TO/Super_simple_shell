@@ -1,10 +1,10 @@
-#include "SSS.h"
+#include "SSM.h"
 
 int main (void)
 {
     int status;
     pid_t le_pid;
-    char *line = NULL, **cmd_argv;
+    char *line = NULL, **cmd_argv, *chemin_trouve;
     size_t len = 0;
     extern char **environ;
 
@@ -25,7 +25,12 @@ int main (void)
         le_pid = fork();
         if (le_pid == 0)
         {
-            execve(cmd_argv[0], cmd_argv, environ);
+            chemin_trouve = _which(cmd_argv[0]);
+            if (!chemin_trouve)
+            {
+                exit(1);
+            }
+            execve(chemin_trouve, cmd_argv, environ);
             perror("Error");
             exit(1);
         }

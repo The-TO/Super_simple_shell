@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "SSS.h"
+#include "SSM.h"
 
 char** LeDecoupeur(char *str)
 {

@@ -1,0 +1,8 @@
+Résumons toute la chaîne avec cette image :
+
+PATH est comme une liste d'adresses où chercher (/usr/local/bin, /usr/bin, /bin, etc.)
+_which parcourt cette liste d'adresses, une par une, et regarde à chaque adresse "est-ce que ls existe ici ?" (via stat)
+Dès qu'il le trouve à une adresse (par exemple /usr/bin), il s'arrête et retourne le chemin complet trouvé (/usr/bin/ls)
+Ton shell donne ensuite ce chemin à execve, qui va chercher physiquement le fichier à cet endroit précis et le lancer
+
+Donc ton shell ne "sait pas ce qu'il faut faire" au sens où il comprendrait la commande — il sait juste où trouver le programme demandé, et il le lance en lui laissant faire tout le travail lui-même. C'est exactement le mécanisme qu'on vient de construire ensemble avec _getenv + _which + build_path.

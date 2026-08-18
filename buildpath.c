@@ -1,4 +1,4 @@
-#include "SSM.h"
+#include "SSH.h"
 
 char *build_path(char *dossier, char *nom_fichier)
 {

@@ -16,11 +16,6 @@ int main (void)
             free(line);
             return(-1);
         }
-        else
-        {
-            printf("%s", line);
-            line[strlen(line) - 1] = '\0';
-        }
         cmd_argv = LeDecoupeur(line);
         le_pid = fork();
         if (le_pid == 0)
